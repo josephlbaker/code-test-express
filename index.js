@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const Member = require('./models/member');
+const Subscription = require('./models/subscription');
 
 app.get('/members', cors(), (_req, res) => {
-  Member.fetchAll()
+  Member.fetchAll({withRelated: ['subscription']})
     .then(members => res.json({ error: false, data: members.toJSON() }))
     .catch(error => console.error(error));
 });

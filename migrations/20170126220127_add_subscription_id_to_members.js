@@ -1,6 +1,6 @@
 exports.up = function(knex) {
   return knex.schema.table('members', function(table) {
-    table.integer('subscription_id').references('subscriptions.id');
+    table.integer('subscription_id').references('subscriptions');
   });
 };
 
